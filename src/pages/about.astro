@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "About Me";
@@ -16,9 +17,14 @@ const happy = true;
 const finished = false;
 const goal = 3;
 
+const skillColor = "cyan";
+const fontWeight = "bold";
+const textCase = "uppercase";
+
 ---
 
 <Layout title={pageTitle}>
+    <h1>{pageTitle}</h1>
     <p>Here are a few facts about me:</p>
     <ul>
       <li>My name is {identity.firstName}.</li>
@@ -29,7 +35,7 @@ const goal = 3;
     </ul>
     <p>My skills are:</p>
     <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
 
     {happy && <p>I am happy to be learning Astro!</p>}
@@ -38,3 +44,16 @@ const goal = 3;
 
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 </Layout>
+
+<style define:vars={{skillColor, fontWeight, textCase}}>
+    h1 {
+      color: purple;
+      font-size: 4rem;
+    }
+
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+    }
+</style>
