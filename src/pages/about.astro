@@ -1,5 +1,4 @@
 ---
-import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "About Me";
@@ -17,7 +16,7 @@ const happy = true;
 const finished = false;
 const goal = 3;
 
-const skillColor = "cyan";
+const skillColor = "purple";
 const fontWeight = "bold";
 const textCase = "uppercase";
 
@@ -46,11 +45,6 @@ const textCase = "uppercase";
 </Layout>
 
 <style define:vars={{skillColor, fontWeight, textCase}}>
-    h1 {
-      color: purple;
-      font-size: 4rem;
-    }
-
     .skill {
         color: var(--skillColor);
         font-weight: var(--fontWeight);

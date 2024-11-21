@@ -1,0 +1,35 @@
+---
+import Social from "./Social.astro";
+---
+
+<footer>
+    <p>Learn more about my work on </p>
+    <div>
+        <Social platform="twitter" username="astrodotbuild" />
+        -
+        <Social platform="github" username="jigcolapaolo" />
+        -
+        <Social platform="youtube" username="astrodotbuild" />
+    </div>
+</footer>
+
+<style>
+    footer {
+        width: 100%;
+        border-radius: 10px;
+        padding: 0 1rem;
+        background-color: #1b1231;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    footer div {
+      display: flex;
+      align-items: center;
+    }
+</style>
