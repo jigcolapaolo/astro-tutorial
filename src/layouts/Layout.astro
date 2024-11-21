@@ -17,7 +17,10 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<h1>My Astro Site</h1>
+		<h1>My <span class="text-gradient">Astro</span> Site</h1>
+		<a href="/">Home</a>
+		<a href="/about/">About</a>
+		<a href="/blog/">Blog</a>
 		<slot />
 	</body>
 </html>
@@ -37,5 +40,25 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background: #13151a;
 		color: white;
+	}
+
+	a {
+		font-size: 1.5rem;
+  		font-weight: bold;
+  		background: linear-gradient(to bottom, rgb(var(--accent)), rgb(var(--accent-light)));
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+
+		&:hover {
+			filter: brightness(1.2);
+		}
+	}
+
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
 	}
 </style>
