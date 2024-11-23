@@ -2,4 +2,4 @@
 const { url, title } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
+<li><a transition:name={title} href={url}>{title}</a></li>
