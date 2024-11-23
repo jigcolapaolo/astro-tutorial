@@ -1,12 +1,12 @@
 interface FrontMatter {
     title: string;
-    description: string;
     pubDate: Date;
+    description: string;
+    author: string;
     image: {
       url: string;
       alt: string;
     };
-    author: string;
     tags: string[];
 }
 

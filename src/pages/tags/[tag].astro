@@ -1,15 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import BlogPost from '../../components/BlogPost.astro';
 import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from 'astro:content';
 
 
 export async function getStaticPaths(): Promise<import('astro').GetStaticPathsResult> {
-  const allPosts = await Astro.glob('../posts/*.md');
+  const allPosts = await getCollection('posts');
 
-  const uniqueTags: string[] = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
   return uniqueTags.map((tag) => {
-  const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+  const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
   return {
     params: { tag } ,
     props: { posts: filteredPosts },
@@ -17,16 +19,17 @@ export async function getStaticPaths(): Promise<import('astro').GetStaticPathsRe
 });
 }
 
-interface Props {
-  posts: Post[]
+interface PageProps {
+  params: { tag: string };
+  props: { posts: CollectionEntry<'posts'>[] };
 }
 
-const { tag } = Astro.params as { tag: string };
-const { posts } = Astro.props as Props;
+const { tag } = Astro.params as PageProps["params"];
+const { posts } = Astro.props as PageProps["props"];
 ---
 <Layout title={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {posts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+    {posts.map((post) => <BlogPost url={`/posts/${post.slug}`} title={post.data.title}/>)}
   </ul>
 </Layout>
