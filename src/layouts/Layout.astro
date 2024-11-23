@@ -45,8 +45,17 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
+		background-color: #f1f5f9;
+		color: black;
+	}
+
+	html.dark {
 		background: #13151a;
-		color: white;
+		color: #fff;
+	}
+
+	.dark .nav-links a {
+		color: #fff;
 	}
 
 	a {
