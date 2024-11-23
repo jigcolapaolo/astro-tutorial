@@ -1,6 +1,10 @@
 ---
 import Layout from "./Layout.astro";
 
+interface Props {
+  frontmatter: FrontMatter
+}
+
 const { frontmatter } = Astro.props;
 ---
 <Layout title={frontmatter.title}>
