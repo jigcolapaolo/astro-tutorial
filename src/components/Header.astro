@@ -3,9 +3,28 @@ import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 import ThemeIcon from "./ThemeIcon.astro";
 import ThemeIconIsland from "./ThemeIconIsland";
+
+const anim = {
+  old: {
+    name: 'bump',
+    duration: '0.5s',
+    easing: 'ease-in',
+    direction: 'reverse',
+  },
+  new: {
+    name: 'bump',
+    duration: '0.5s',
+    easing: 'ease-in-out',
+  },
+};
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
-<header>
+<header transition:animate={customTransition}>
     <nav>
         <Hamburger />
         <ThemeIcon />

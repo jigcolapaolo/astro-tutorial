@@ -1,4 +1,5 @@
 ---
+import { fade } from "astro:transitions";
 import Layout from "./Layout.astro";
 
 interface Props {
@@ -11,14 +12,14 @@ const { frontmatter } = Astro.props;
 
     <h1 transition:name={frontmatter.title}>{frontmatter.title}</h1>
     <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <p transition:animate={fade({ duration: '.4s'})}><em>{frontmatter.description}</em></p>
+    <p transition:animate={fade({ duration: '.6s'})}>Written by: <a href="/about">{frontmatter.author}</a></p>
+    <img transition:animate={fade({ duration: '.8s'})} src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
     <div class="tags">
         {frontmatter.tags.map((tag) => (
           <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
         ))}
-      </div>
+    </div>
     <slot />
 </Layout>
 

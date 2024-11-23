@@ -1,11 +1,12 @@
 ---
+import { slide } from 'astro:transitions';
 import Greeting from '../components/Greeting';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="My Astro Site">
 	<main>
-		<h1>My <span class="text-gradient">Astro</span> Site ☄️</h1>
+		<h1 transition:animate={slide({ duration: 500 })}>My <span class="text-gradient">Astro</span> Site ☄️</h1>
 		<Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
 	</main>
 </Layout>

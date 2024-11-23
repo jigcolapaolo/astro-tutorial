@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 
 export default function ThemeIconIsland() {
   useEffect(() => {
